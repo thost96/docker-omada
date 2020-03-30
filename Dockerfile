@@ -23,23 +23,23 @@ RUN wget --quiet https://static.tp-link.com/2020/202001/20200116/Omada_Controlle
     tar zxf Omada_Controller_v3.2.6_linux_x64.tar.gz && \
     mkdir -p /opt/tplink/EAPController/ && \
     cp -r /tmp/Omada_Controller_v3.2.6_linux_x64/* /opt/tplink/EAPController/ && \
-    rm -rf Omada
+    rm -rf Omada*
 
 RUN groupadd -g 508 omada && \
     useradd -u 508 -g 508 -d /opt/tplink/EAPController omada
 
 WORKDIR /
-RUN mkdir -p /opt/tplink/EAPController/logs /opt/tplink/EAPController/work  /opt/tplink/EAPController/data && \
+RUN mkdir -p /opt/tplink/EAPController/logs /opt/tplink/EAPController/work /opt/tplink/EAPController/data && \
     chown -R omada:omada /opt/tplink/EAPController && \
     chmod a+x /opt/tplink/EAPController/bin/* && \
     chmod a+x /opt/tplink/EAPController/jre/bin/*
 
-COPY --chown=508:508 entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
-
 ENV LANG="de_DE.UTF-8" \
-	TZ="Europe/Berlin"
+        TZ="Europe/Berlin"
 
+COPY --chown=508:508 entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
 WORKDIR /opt/tplink/EAPController
+RUN chmod +x entrypoint.sh healthcheck.sh 
 
 USER omada
 EXPOSE 8043 27001/udp 29810/udp 29811 29812
