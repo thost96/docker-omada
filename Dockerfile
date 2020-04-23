@@ -1,7 +1,6 @@
 FROM ubuntu:18.04
 
 LABEL maintainer="info@thorstenreichelt.de"
-LABEL version="3.2.4"
 
 RUN apt-get update -qq && apt-get install -y -qq \
       locales \      
