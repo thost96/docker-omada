@@ -3,6 +3,8 @@ TP-Links Omada Controller for EAPs as a Docker Container
 
 ## Changelog
 
+1.4 Updated Omada Controller Software to 3.2.9
+
 1.3 Fixed permission error on healthcheck.sh
 
 1.2 Updated Omada Controller Software to 3.2.6
