@@ -32,6 +32,8 @@ TP-Links Omada Controller for EAPs as a Docker Container
 
 ## Changelog
 
+1.6 Switched to Ubuntu 20.04 LTS in master and splitted 3.2.9 into 3.2.9-lts-18 for Ubuntu 18.04 and 3.2.9-lts-20 for Ubuntu 20.04 
+
 1.5 Added docker run and docker compose commands to Readme
 
 1.4 Updated Omada Controller Software to 3.2.9
