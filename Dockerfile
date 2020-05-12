@@ -18,10 +18,11 @@ RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
 RUN cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 WORKDIR /tmp
-RUN wget --quiet https://static.tp-link.com/2020/202004/20200409/Omada_Controller_v3.2.9_linux_x64.tar.gz && \
-    tar zxf Omada_Controller_v3.2.9_linux_x64.tar.gz && \
+
+RUN wget --quiet https://static.tp-link.com/2020/202004/20200420/Omada_Controller_v3.2.10_linux_x64.tar.gz && \
+    tar zxf Omada_Controller_v3.2.10_linux_x64.tar.gz && \
     mkdir -p /opt/tplink/EAPController/ && \
-    cp -r /tmp/Omada_Controller_v3.2.9_linux_x64/* /opt/tplink/EAPController/ && \
+    cp -r /tmp/Omada_Controller_v3.2.10_linux_x64/* /opt/tplink/EAPController/ && \
     rm -rf Omada*
 
 RUN groupadd -g 508 omada && \
