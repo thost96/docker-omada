@@ -6,12 +6,12 @@ TP-Links Omada Controller for EAPs as a Docker Container
     docker run \
       --name omada-controller \
       --hostname omada \
-      --restart unless-stopped \      
+      --restart always \      
       -e 'TZ=Europe/Berlin' \
       --volume 'omada-data:/opt/tplink/EAPController/data' \
       --volume 'omada-work:/opt/tplink/EAPController/work' \
       --volume 'omada-logs:/opt/tplink/EAPController/logs' \
-      thost96/omada:3.2.9
+      thost96/omada:latest
 
 ## Docker Compose
 
@@ -20,17 +20,19 @@ TP-Links Omada Controller for EAPs as a Docker Container
         omada-controller:
             container_name: omada-controller
             hostname: omada        
-            restart: unless-stopped
+            restart: always
             environment:
                 - TZ=Europe/Berlin
             volumes:
                 - 'omada-data:/opt/tplink/EAPController/data'
                 - 'omada-work:/opt/tplink/EAPController/work'
                 - 'omada-logs:/opt/tplink/EAPController/logs'
-            image: 'thost96/omada:3.2.9'
+            image: 'thost96/omada:latest'
 
 
 ## Changelog
+
+1.7 Updated Omada Controller Software to 3.2.10. Also added 3.2.10-lts-18 for backwards support on Ubuntu 18.04. 
 
 1.6 Switched to Ubuntu 20.04 LTS in master and splitted 3.2.9 into 3.2.9-lts-18 for Ubuntu 18.04 and 3.2.9-lts-20 for Ubuntu 20.04 
 
