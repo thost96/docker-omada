@@ -5,8 +5,8 @@ LABEL maintainer="info@thorstenreichelt.de"
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
-      locales=2.28-10 \
-      tzdata=2020a-0+deb10u1 \
+      locales=2.31-0ubuntu9 \
+	tzdata=2019c-3ubuntu1 \
       net-tools \
       curl \
       jsvc \
