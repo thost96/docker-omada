@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
       locales=2.31-0ubuntu9 \
-	tzdata=2019c-3ubuntu1 \
+      tzdata=2019c-3ubuntu1 \
       net-tools \
       curl \
       jsvc \
@@ -24,7 +24,7 @@ ENV LANG="de_DE.UTF-8" \
 
 WORKDIR /tmp
 
-RUN wget --quiet https://static.tp-link.com/2020/202004/20200420/Omada_Controller_v3.2.10_linux_x64.tar.gz && \
+RUN wget --quiet --no-check-certificate https://static.tp-link.com/2020/202004/20200420/Omada_Controller_v3.2.10_linux_x64.tar.gz && \
     tar zxf Omada_Controller_v3.2.10_linux_x64.tar.gz && \
     mkdir -p /opt/tplink/EAPController/ && \
     cp -r /tmp/Omada_Controller_v3.2.10_linux_x64/* /opt/tplink/EAPController/ && \
