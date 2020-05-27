@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 rm -f /opt/tplink/EAPController/data/db/journal/prealloc.*
 exec /opt/tplink/EAPController/jre/bin/java \
        -server -Xms128m -Xmx1024m -XX:MaxHeapFreeRatio=60 -XX:MinHeapFreeRatio=30 \
