@@ -3,19 +3,24 @@ FROM alpine:3.11.6
 LABEL maintainer="info@thorstenreichelt.de"
 
 RUN apk update && apk add --no-cache \
-#      locales \
       tzdata=2020a-r0 \
       net-tools=1.60_git20140218-r2 \
 #      jsvc \
       tar=1.32-r1 \
       wget=1.20.3-r0 
+
+RUN apk --no-cache add ca-certificates wget && \
+    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
+    wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk && \
+    wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-bin-2.25-r0.apk && \
+    wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-i18n-2.25-r0.apk && \
+    apk add glibc-bin-2.25-r0.apk glibc-i18n-2.25-r0.apk glibc-2.25-r0.apk
  
-#RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
-#    && \dpkg-reconfigure --frontend=noninteractive locales \
-#    && \update-locale LANG=de_DE.UTF-8
-#RUN cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+COPY locale.md /locale.md
+RUN cat locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8
 
 ENV LANG="de_DE.UTF-8" \
+    LANGUAGE="de_DE.UTF-8" \
     TZ="Europe/Berlin"
 
 WORKDIR /tmp
