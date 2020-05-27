@@ -8,7 +8,6 @@ RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
       locales=2.31-0ubuntu9 \
       tzdata=2019c-3ubuntu1 \
       net-tools \
-      curl \
       jsvc \
       tar \
       wget \
