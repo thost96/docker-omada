@@ -1,22 +1,19 @@
-FROM ubuntu:20.04
+FROM alpine:3.11.6
 
 LABEL maintainer="info@thorstenreichelt.de"
 
-ARG DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
-      locales=2.31-0ubuntu9 \
-      tzdata=2019c-3ubuntu1 \
-      net-tools \
-      jsvc \
-      tar \
-      wget \
-    && rm -rf /var/lib/apt/lists/*
-    
-RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
-    && \dpkg-reconfigure --frontend=noninteractive locales \
-    && \update-locale LANG=de_DE.UTF-8
-RUN cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+RUN apk update && apk add --no-cache \
+#      locales \
+      tzdata=2020a-r0 \
+      net-tools=1.60_git20140218-r2 \
+#      jsvc \
+      tar=1.32-r1 \
+      wget=1.20.3-r0 
+ 
+#RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
+#    && \dpkg-reconfigure --frontend=noninteractive locales \
+#    && \update-locale LANG=de_DE.UTF-8
+#RUN cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 ENV LANG="de_DE.UTF-8" \
     TZ="Europe/Berlin"
@@ -29,8 +26,8 @@ RUN wget --quiet --no-check-certificate https://static.tp-link.com/2020/202004/2
     cp -r /tmp/Omada_Controller_v3.2.10_linux_x64/* /opt/tplink/EAPController/ && \
     rm -rf Omada*
 
-RUN groupadd -g 508 omada && \
-    useradd -u 508 -g 508 -d /opt/tplink/EAPController omada
+RUN addgroup omada -S && \
+    adduser -S -G omada omada
 
 WORKDIR /
 RUN mkdir -p /opt/tplink/EAPController/logs /opt/tplink/EAPController/work /opt/tplink/EAPController/data && \
@@ -38,7 +35,7 @@ RUN mkdir -p /opt/tplink/EAPController/logs /opt/tplink/EAPController/work /opt/
     chmod a+x /opt/tplink/EAPController/bin/* && \
     chmod a+x /opt/tplink/EAPController/jre/bin/*
 
-COPY --chown=508:508 entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
+COPY --chown=omada:omada entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
 WORKDIR /opt/tplink/EAPController
 RUN chmod +x entrypoint.sh healthcheck.sh 
 
