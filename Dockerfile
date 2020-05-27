@@ -6,7 +6,6 @@ RUN apt-get update -qq && apt-get install -y -qq \
       locales \      
       tzdata \
       net-tools \
-      curl \
       jsvc \
       tar \
       wget \
