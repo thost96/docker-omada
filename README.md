@@ -32,6 +32,8 @@ TP-Links Omada Controller for EAPs as a Docker Container
 
 ## Changelog
 
+1.9 removed curl from latest image due to security bugs
+
 1.8 optimized Dockerfile and added fixed failing buils due to changed https certificate on static.tp-link.com
 
 1.7 Updated Omada Controller Software to 3.2.10. Also added 3.2.10-lts-18 for backwards support on Ubuntu 18.04. 
