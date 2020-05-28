@@ -6,12 +6,12 @@ TP-Links Omada Controller for EAPs as a Docker Container
     docker run \
       --name omada-controller \
       --hostname omada \
-      --restart unless-stopped \      
+      --restart always \      
       -e 'TZ=Europe/Berlin' \
       --volume 'omada-data:/opt/tplink/EAPController/data' \
       --volume 'omada-work:/opt/tplink/EAPController/work' \
       --volume 'omada-logs:/opt/tplink/EAPController/logs' \
-      thost96/omada:3.2.9
+      thost96/omada:latest
 
 ## Docker Compose
 
@@ -20,14 +20,14 @@ TP-Links Omada Controller for EAPs as a Docker Container
         omada-controller:
             container_name: omada-controller
             hostname: omada        
-            restart: unless-stopped
+            restart: always
             environment:
                 - TZ=Europe/Berlin
             volumes:
                 - 'omada-data:/opt/tplink/EAPController/data'
                 - 'omada-work:/opt/tplink/EAPController/work'
                 - 'omada-logs:/opt/tplink/EAPController/logs'
-            image: 'thost96/omada:3.2.9'
+            image: 'thost96/omada:latest'
 
 
 ## Changelog

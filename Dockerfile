@@ -24,6 +24,9 @@ ENV LANG="de_DE.UTF-8" \
     LANGUAGE="de_DE.UTF-8" \
     TZ="Europe/Berlin"
 
+ENV LANG="de_DE.UTF-8" \
+    TZ="Europe/Berlin"
+
 WORKDIR /tmp
 
 RUN wget --quiet --no-check-certificate ${OMADA_REPO}/Omada_Controller_v${OMADA_VERSION}_linux_x64.tar.gz \
@@ -34,7 +37,6 @@ RUN wget --quiet --no-check-certificate ${OMADA_REPO}/Omada_Controller_v${OMADA_
 
 RUN apt-get remove tzdata -y \
 	&& rm -rf /var/lib/apt/lists/*
-
 
 RUN groupadd omada \
 	&& useradd -g omada -d /opt/tplink/EAPController omada
