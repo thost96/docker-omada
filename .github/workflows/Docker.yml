@@ -1,0 +1,39 @@
+name: Docker build and push
+
+on:
+  push:
+    branches:
+    - master 
+    paths:
+    - "*"
+    - "!README.md"
+  schedule:
+    #weekly scheduled build
+    - cron:  "0 0 * * 0"
+
+jobs:
+  hadolint:
+    name: hadolint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - name: hadolint
+        uses: reviewdog/action-hadolint@v1
+      
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - name: Build and push
+        uses: docker/build-push-action@v1.1.0
+        with:
+          username: ${{secrets.DOCKER_USERNAME }}
+          password: ${{secrets.DOCKER_PASSWORD }}
+          repository: thost96/omada
+          tags: latest
+          cache: true
+          add_git_labels: true
+          push: ${{ startsWith(github.ref, 'refs/tags/') }}
+
