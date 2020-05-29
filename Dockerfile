@@ -1,15 +1,21 @@
-FROM ubuntu:20.04
+ARG BASEIMAGE="ubuntu:20.04"
+
+FROM ${BASEIMAGE}
 
 LABEL maintainer="info@thorstenreichelt.de"
 
+ARG LOCALES_VERSION="2.31-0ubuntu9" 
+ARG TZDATA_VERSION="2019c-3ubuntu1" 
+ARG DEBIAN_FRONTEND=noninteractive
+ARG OMADA_REPO=https://static.tp-link.com/2020/202004/20200420
+ARG OMADA_VERSION=3.2.10
+
 ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
-    PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java \
-    OMADA_REPO=https://static.tp-link.com/2020/202004/20200420 \  
-    OMADA_VERSION=3.2.10
+    PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 
 
 RUN apt-get update -qq && apt-get install -y -qq \
-	locales=2.31-0ubuntu9 \      
-        tzdata=2019c-3ubuntu1 \
+	locales=${LOCALES_VERSION} \      
+        tzdata=${TZDATA_VERSION} \
         net-tools=1.60+git20180626.aebd88e-1ubuntu1 \
         tar=1.30+dfsg-7 \
         wget=1.20.3-1ubuntu1 \
@@ -22,9 +28,6 @@ RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
 
 ENV LANG="de_DE.UTF-8" \
     LANGUAGE="de_DE.UTF-8" \
-    TZ="Europe/Berlin"
-
-ENV LANG="de_DE.UTF-8" \
     TZ="Europe/Berlin"
 
 WORKDIR /tmp
