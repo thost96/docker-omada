@@ -15,11 +15,10 @@ ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
 
 RUN apt-get update -qq && apt-get install -y -qq \
 	locales=${LOCALES_VERSION} \      
-        tzdata=${TZDATA_VERSION} \
-        net-tools=1.60+git20180626.aebd88e-1ubuntu1 \
-        tar=1.30+dfsg-7 \
-        wget=1.20.3-1ubuntu1 \
-        && rm -rf /var/lib/apt/lists/*
+	tzdata=${TZDATA_VERSION} \
+	tar=1.30+dfsg-7 \
+	wget=1.20.3-1ubuntu1 \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
 	&& \dpkg-reconfigure --frontend=noninteractive locales \
@@ -58,6 +57,6 @@ RUN chmod +x entrypoint.sh healthcheck.sh
 USER omada
 EXPOSE 8043 27001/udp 29810/udp 29811 29812
 VOLUME ["/opt/tplink/EAPController/data","/opt/tplink/EAPController/work","/opt/tplink/EAPController/logs"]
-#ENTRYPOINT ["sh", "/opt/tplink/EAPController/entrypoint.sh"]
-CMD ["/opt/tplink/EAPController/jre/bin/java", " -server -Xms128m -Xmx1024m -XX:MaxHeapFreeRatio=60 -XX:MinHeapFreeRatio=30 -Deap.home=/opt/tplink/EAPController -cp /usr/share/java/commons-daemon.jar:/opt/tplink/EAPController/lib/* com.tp_link.eap.start.EapLinuxMain"]
+ENTRYPOINT ["sh", "/opt/tplink/EAPController/entrypoint.sh"]
+#CMD ["/opt/tplink/EAPController/jre/bin/java", " -server -Xms128m -Xmx1024m -XX:MaxHeapFreeRatio=60 -XX:MinHeapFreeRatio=30 -Deap.home=/opt/tplink/EAPController -cp /usr/share/java/commons-daemon.jar:/opt/tplink/EAPController/lib/* com.tp_link.eap.start.EapLinuxMain"]
 HEALTHCHECK --start-period=120s --timeout=10s CMD /opt/tplink/EAPController/healthcheck.sh
