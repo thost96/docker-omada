@@ -40,10 +40,6 @@ jobs:
             tzdata: 2020a-0ubuntu0.18.04
             tar: 1.29b-2ubuntu0.1
             wget: 1.19.4-1ubuntu2.2
-         # - version: 3.2.10
-         #   repo: "https://static.tp-link.com/2020/202004/20200420"
-         #   tag: 3.2.10-alpine apline 
-         #   os: alpine:3.11.6
           
           - version: 3.2.9
             repo: "https://static.tp-link.com/2020/202004/20200409"
@@ -95,6 +91,23 @@ jobs:
             tzdata: 2020a-0ubuntu0.18.04
             tar: 1.29b-2ubuntu0.1
             wget: 1.19.4-1ubuntu2.2
+          
+          - version: 3.2.1
+            repo: "https://static.tp-link.com/2019/201909/20190906"
+            tag: 3.2.1-lts-20,3.2.1
+            os: ubuntu:20.04           
+            locales: 2.31-0ubuntu9
+            tzdata: 2019c-3ubuntu1
+            tar: 1.30+dfsg-7
+            wget: 1.20.3-1ubuntu1
+          - version: 3.2.1
+            repo: "https://static.tp-link.com/2019/201909/20190906"
+            tag: 3.2.1-lts-18 
+            os: ubuntu:18.04
+            locales: 2.27-3ubuntu1
+            tzdata: 2020a-0ubuntu0.18.04
+            tar: 1.29b-2ubuntu0.1
+            wget: 1.19.4-1ubuntu2.2
     steps:
       - uses: actions/checkout@v1
       
@@ -115,8 +128,3 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: brpaz/hadolint-action@master
-     
-     # - name: Filter on OS?
-     #   if: ${{ matrix.os == 'ubuntu:18.04' }}
-     #   build: 
-     
