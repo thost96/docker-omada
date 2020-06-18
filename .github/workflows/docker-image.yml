@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - master
-    - dev
     paths:
     - "*"
     - "!README.md"
@@ -13,7 +12,6 @@ on:
   pull_request:
     branches:
     - master
-    - dev
     paths:
     - "*"
     - "!README.md"
