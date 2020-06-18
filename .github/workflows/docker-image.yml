@@ -42,29 +42,29 @@ jobs:
          #   os: alpine:3.11.6
           
           - version: 3.2.9
-            repo: "https://static.tp-link.com/2020/202004/20200420"
+            repo: "https://static.tp-link.com/2020/202004/20200409"
             tag: 3.2.9-lts-20 3.2.9 
             os: ubuntu:20.04           
           - version: 3.2.9
-            repo: "https://static.tp-link.com/2020/202004/20200420"
+            repo: "https://static.tp-link.com/2020/202004/20200409"
             tag: 3.2.9-lts-18 
             os: ubuntu:18.04
           
           - version: 3.2.6
-            repo: "https://static.tp-link.com/2020/202004/20200420"
+            repo: "https://static.tp-link.com/2020/202001/20200116"
             tag: 3.2.6-lts-20 3.2.6
             os: ubuntu:20.04           
           - version: 3.2.6
-            repo: "https://static.tp-link.com/2020/202004/20200420"
+            repo: "https://static.tp-link.com/2020/202001/20200116"
             tag: 3.2.6-lts-18 
             os: ubuntu:18.04
             
           - version: 3.2.4
-            repo: "https://static.tp-link.com/2020/202004/20200420"
+            repo: "https://static.tp-link.com/2019/201911/20191108"
             tag: 3.2.4-lts-20 3.2.4 
             os: ubuntu:20.04           
           - version: 3.2.4
-            repo: "https://static.tp-link.com/2020/202004/20200420"
+            repo: "https://static.tp-link.com/2019/201911/20191108"
             tag: 3.2.4-lts-18 
             os: ubuntu:18.04
           
