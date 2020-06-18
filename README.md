@@ -32,6 +32,8 @@ TP-Links Omada Controller for EAPs as a Docker Container
 
 ## Changelog
 
+2.2 added github actions auto build feature for all versions and os's 
+
 2.1 optiomized Dockerfiles
 
 2.0 add alpine as an alternative base imag
