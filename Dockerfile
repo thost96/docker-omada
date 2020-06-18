@@ -18,8 +18,10 @@ ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
 RUN apt-get update -qq && apt-get install -y --no-install-recommends\
 	locales=${LOCALES_VERSION} \      
 	tzdata=${TZDATA_VERSION} \
-	tar=${TAR_VERSION} \
-	wget=${WGET_VERSION} \
+	tar \
+	wget \
+#	tar=${TAR_VERSION} \
+#	wget=${WGET_VERSION} \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
