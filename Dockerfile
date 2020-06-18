@@ -1,5 +1,5 @@
 ARG BASEIMAGE=ubuntu:20.04
-
+# hadolint ignore=DL3006
 FROM ${BASEIMAGE}
 
 LABEL maintainer="info@thorstenreichelt.de"
