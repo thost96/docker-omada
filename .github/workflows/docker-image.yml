@@ -2,11 +2,15 @@ name: Docker Image CI
 
 on:
   push:
+    paths-ignore: 
+      - "README.md"
     branches:
     - master
   schedule:
     - cron:  "0 0 * * 0"
   pull_request:
+    paths-ignore: 
+      - "README.md"
     branches:
     - master
       
