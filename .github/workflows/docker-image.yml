@@ -69,7 +69,6 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
           add_git_labels: true
-          target: ${{ matrix.os }}
           repository: thost96/omada
           tags: ${{ matrix.tag }}
           push: false
