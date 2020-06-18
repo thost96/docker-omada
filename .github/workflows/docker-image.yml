@@ -44,29 +44,53 @@ jobs:
           - version: 3.2.9
             repo: "https://static.tp-link.com/2020/202004/20200409"
             tag: 3.2.9-lts-20,3.2.9
-            os: ubuntu:20.04           
+            os: ubuntu:20.04
+            locales: 2.31-0ubuntu9
+            tzdata: 2019c-3ubuntu1
+            tar: 1.30+dfsg-7
+            wget: 1.20.3-1ubuntu1      
           - version: 3.2.9
             repo: "https://static.tp-link.com/2020/202004/20200409"
             tag: 3.2.9-lts-18 
             os: ubuntu:18.04
-          
+            locales: 2.27-3ubuntu1
+            tzdata: 2020a-0ubuntu0.18.04
+            tar: 1.29b-2ubuntu0.1
+            wget: 1.19.4-1ubuntu2.2
+            
           - version: 3.2.6
             repo: "https://static.tp-link.com/2020/202001/20200116"
             tag: 3.2.6-lts-20,3.2.6
             os: ubuntu:20.04           
+            locales: 2.31-0ubuntu9
+            tzdata: 2019c-3ubuntu1
+            tar: 1.30+dfsg-7
+            wget: 1.20.3-1ubuntu1
           - version: 3.2.6
             repo: "https://static.tp-link.com/2020/202001/20200116"
             tag: 3.2.6-lts-18 
             os: ubuntu:18.04
+            locales: 2.27-3ubuntu1
+            tzdata: 2020a-0ubuntu0.18.04
+            tar: 1.29b-2ubuntu0.1
+            wget: 1.19.4-1ubuntu2.2
             
           - version: 3.2.4
             repo: "https://static.tp-link.com/2019/201911/20191108"
             tag: 3.2.4-lts-20,3.2.4
             os: ubuntu:20.04           
+            locales: 2.31-0ubuntu9
+            tzdata: 2019c-3ubuntu1
+            tar: 1.30+dfsg-7
+            wget: 1.20.3-1ubuntu1
           - version: 3.2.4
             repo: "https://static.tp-link.com/2019/201911/20191108"
             tag: 3.2.4-lts-18 
             os: ubuntu:18.04
+            locales: 2.27-3ubuntu1
+            tzdata: 2020a-0ubuntu0.18.04
+            tar: 1.29b-2ubuntu0.1
+            wget: 1.19.4-1ubuntu2.2
     steps:
       - uses: actions/checkout@v1
       
@@ -79,8 +103,7 @@ jobs:
           add_git_labels: true
           repository: thost96/omada
           tags: ${{ matrix.tag }}
-          push: false
-          build_args: BASEIMAGE=${{matrix.os}},OMADA_VERSION=${{matrix.version}},OMADA_REPO=${{matrix.repo}}
+          build_args: BASEIMAGE=${{matrix.os}},OMADA_VERSION=${{matrix.version}},OMADA_REPO=${{matrix.repo}},LOCALES_VERSION=${{matrix.locales}},TZDATA_VERSION=${{matrix.tzdata}},TAR_VERSION=${{matrix.tar}},WGET_VERSION=${{matrix.wget}}
 
   lint:
     name: Lint Dockerfile
