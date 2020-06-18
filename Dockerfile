@@ -6,6 +6,8 @@ LABEL maintainer="info@thorstenreichelt.de"
 
 ARG LOCALES_VERSION="2.31-0ubuntu9" 
 ARG TZDATA_VERSION="2019c-3ubuntu1" 
+ARG TAR_VERSION="1.30+dfsg-7"
+ARG WGET_VERSION="1.20.3-1ubuntu1"
 ARG DEBIAN_FRONTEND=noninteractive
 ARG OMADA_REPO=https://static.tp-link.com/2020/202004/20200420
 ARG OMADA_VERSION=3.2.10
@@ -16,8 +18,8 @@ ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
 RUN apt-get update -qq && apt-get install -y -qq \
 	locales=${LOCALES_VERSION} \      
 	tzdata=${TZDATA_VERSION} \
-	tar=1.30+dfsg-7 \
-	wget=1.20.3-1ubuntu1 \
+	tar=${TAR_VERSION} \
+	wget=${WGET_VERSION} \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
