@@ -28,7 +28,7 @@ jobs:
         include:
           - version: 3.2.10
             repo: "https://static.tp-link.com/2020/202004/20200420"
-            tag: 3.2.10-lts-20 3.2.10 latest
+            tag: 3.2.10-lts-20
             os: ubuntu:20.04           
           - version: 3.2.10
             repo: "https://static.tp-link.com/2020/202004/20200420"
@@ -41,7 +41,7 @@ jobs:
           
           - version: 3.2.9
             repo: "https://static.tp-link.com/2020/202004/20200409"
-            tag: 3.2.9-lts-20 3.2.9 
+            tag: 3.2.9-lts-20
             os: ubuntu:20.04           
           - version: 3.2.9
             repo: "https://static.tp-link.com/2020/202004/20200409"
@@ -50,7 +50,7 @@ jobs:
           
           - version: 3.2.6
             repo: "https://static.tp-link.com/2020/202001/20200116"
-            tag: 3.2.6-lts-20 3.2.6
+            tag: 3.2.6-lts-20
             os: ubuntu:20.04           
           - version: 3.2.6
             repo: "https://static.tp-link.com/2020/202001/20200116"
@@ -59,7 +59,7 @@ jobs:
             
           - version: 3.2.4
             repo: "https://static.tp-link.com/2019/201911/20191108"
-            tag: 3.2.4-lts-20 3.2.4 
+            tag: 3.2.4-lts-20
             os: ubuntu:20.04           
           - version: 3.2.4
             repo: "https://static.tp-link.com/2019/201911/20191108"
