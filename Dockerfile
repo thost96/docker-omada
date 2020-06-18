@@ -15,7 +15,7 @@ ARG OMADA_VERSION=3.2.10
 ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
     PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 
 
-RUN apt-get update -qq && apt-get install -y -qq \
+RUN apt-get update -qq && apt-get install -y --no-install-recommends\
 	locales=${LOCALES_VERSION} \      
 	tzdata=${TZDATA_VERSION} \
 	tar=${TAR_VERSION} \
