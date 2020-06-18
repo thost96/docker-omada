@@ -1,0 +1,94 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+    - master
+    - dev
+    paths:
+    - "*"
+    - "!README.md"
+  schedule:
+    - cron:  "0 0 * * 0"
+  pull_request:
+    branches:
+    - master
+    - dev
+    paths:
+    - "*"
+    - "!README.md"
+
+
+jobs:
+  
+  build:
+    name: Omada Controller ${{ matrix.version }} on ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:        
+        include:
+          - version: 3.2.10
+            repo: "https://static.tp-link.com/2020/202004/20200420"
+            tag: 3.2.10-lts-20 3.2.10 latest
+            os: ubuntu:20.04           
+          - version: 3.2.10
+            repo: "https://static.tp-link.com/2020/202004/20200420"
+            tag: 3.2.10-lts-18 
+            os: ubuntu:18.04
+         # - version: 3.2.10
+         #   repo: "https://static.tp-link.com/2020/202004/20200420"
+         #   tag: 3.2.10-alpine apline 
+         #   os: alpine:3.11.6
+          
+          - version: 3.2.9
+            repo: "https://static.tp-link.com/2020/202004/20200420"
+            tag: 3.2.9-lts-20 3.2.9 
+            os: ubuntu:20.04           
+          - version: 3.2.9
+            repo: "https://static.tp-link.com/2020/202004/20200420"
+            tag: 3.2.9-lts-18 
+            os: ubuntu:18.04
+          
+          - version: 3.2.6
+            repo: "https://static.tp-link.com/2020/202004/20200420"
+            tag: 3.2.6-lts-20 3.2.6
+            os: ubuntu:20.04           
+          - version: 3.2.6
+            repo: "https://static.tp-link.com/2020/202004/20200420"
+            tag: 3.2.6-lts-18 
+            os: ubuntu:18.04
+            
+          - version: 3.2.4
+            repo: "https://static.tp-link.com/2020/202004/20200420"
+            tag: 3.2.4-lts-20 3.2.4 
+            os: ubuntu:20.04           
+          - version: 3.2.4
+            repo: "https://static.tp-link.com/2020/202004/20200420"
+            tag: 3.2.4-lts-18 
+            os: ubuntu:18.04
+          
+    steps:
+      - uses: actions/checkout@v1
+      
+      - uses: docker/build-push-action@v1
+        env:
+          DOCKER_BUILDKIT: "1"
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}
+          add_git_labels: true
+          target: ${{ matrix.os }}
+          repository: thost96/omada
+          tags: ${{ matrix.tag }}
+          build_args: BASEIMAGE=${{matrix.os}},OMADA_VERSION=${{matrix.version}},OMADA_REPO=${{matrix.repo}}
+
+      - uses: reviewdog/action-hadolint@v1
+        name: hadolint       
+        with:
+          reporter: github-pr-check
+     
+     # - name: Filter on OS?
+     #   if: ${{ matrix.os == 'ubuntu:18.04' }}
+     #   build: 
+     
