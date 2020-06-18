@@ -63,7 +63,21 @@ jobs:
             repo: "https://static.tp-link.com/2019/201911/20191108"
             tag: 3.2.4-lts-18 
             os: ubuntu:18.04
-
+    steps:
+      - uses: actions/checkout@v1
+      
+      - uses: docker/build-push-action@v1
+        env:
+          DOCKER_BUILDKIT: "1"
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}
+          add_git_labels: true
+          target: ${{ matrix.os }}
+          repository: thost96/omada
+          tags: ${{ matrix.tag }}
+          push: false
+          build_args: BASEIMAGE=${{matrix.os}},OMADA_VERSION=${{matrix.version}},OMADA_REPO=${{matrix.repo}}
 
   lint:
     name: Lint Dockerfile
