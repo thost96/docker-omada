@@ -4,16 +4,12 @@ on:
   push:
     branches:
     - master
-    paths:
-    - "!README.md"
   schedule:
     - cron:  "0 0 * * 0"
   pull_request:
     branches:
     - master
-    paths:
-    - "!README.md"
-
+      
 
 jobs:
   
