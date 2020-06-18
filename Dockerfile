@@ -52,7 +52,8 @@ RUN mkdir -p /opt/tplink/EAPController/logs /opt/tplink/EAPController/work /opt/
 
 COPY --chown=omada:omada entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
 WORKDIR /opt/tplink/EAPController
-RUN chmod +x entrypoint.sh healthcheck.sh 
+#RUN chmod +x entrypoint.sh healthcheck.sh 
+RUN chmod +x entrypoint.sh  
 
 USER omada
 EXPOSE 8043 27001/udp 29810/udp 29811 29812
