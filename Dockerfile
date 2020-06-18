@@ -50,7 +50,8 @@ RUN mkdir -p /opt/tplink/EAPController/logs /opt/tplink/EAPController/work /opt/
 	&& chmod a+x /opt/tplink/EAPController/bin/* \
 	&& chmod a+x /opt/tplink/EAPController/jre/bin/*
 
-COPY --chown=omada:omada entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
+#COPY --chown=omada:omada entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
+COPY --chown=omada:omada entrypoint.sh /opt/tplink/EAPController/
 WORKDIR /opt/tplink/EAPController
 #RUN chmod +x entrypoint.sh healthcheck.sh 
 RUN chmod +x entrypoint.sh  
