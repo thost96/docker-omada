@@ -16,8 +16,10 @@ ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
     PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends\
-	locales=${LOCALES_VERSION} \      
-	tzdata=${TZDATA_VERSION} \
+#	locales=${LOCALES_VERSION} \      
+#	tzdata=${TZDATA_VERSION} \
+	locales \
+	tzdata \
 	tar \
 	wget \
 #	tar=${TAR_VERSION} \
