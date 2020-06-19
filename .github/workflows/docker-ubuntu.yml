@@ -132,12 +132,16 @@ jobs:
   securitycheck:
      name: Scan for Vuls 
      runs-on: ubuntu-latest
+     strategy:
+      fail-fast: false
+      matrix:
+        tags: [latest, 3.2.10-lts-20, 3.2.10-lts-18, 3.2.9-lts-20, 3.2.9-lts-18, 3.2.6-lts-20, 3.2.6-lts-18, 3.2.4-lts-20, 3.2.4-lts-18, 3.2.1-lts-20, 3.2.1-lts-18]
      steps:
         - name: Login to DockerHub Registry
           run: echo ${{ secrets.DOCKER_PASS }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
         - name: Pull docker image
-          run: docker pull ${{secrets.DOCKER_USER }}/omada:${{ matrix.tag }}
+          run: docker pull ${{secrets.DOCKER_USER }}/omada:${{ matrix.tags }}
         - name: Trivy Action
           uses: homoluctus/gitrivy@v2  
           with:
-            image: ${{secrets.DOCKER_USER }}/omada:${{ matrix.tag }}
+            image: ${{secrets.DOCKER_USER }}/omada:${{ matrix.tags }}
