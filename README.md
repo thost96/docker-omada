@@ -1,5 +1,5 @@
 # docker-omada
-TP-Links Omada Controller for EAPs as a Docker Container
+TP-Links Omada Controller for EAPs as a Docker Image
 
 ## Docker RUN
 
@@ -32,28 +32,42 @@ TP-Links Omada Controller for EAPs as a Docker Container
 
 ## Changelog
 
-2.2 added github actions auto build feature for all versions and os's 
+### 1.8.1 (20.06.2020)
+* (thost96) - changed changelog to global version
 
-2.1 optiomized Dockerfiles
+### 1.8.0 (29.05.2020)
+* (thost96) - added github actions auto build feature for all versions and os's 
 
-2.0 add alpine as an alternative base imag
+### 1.7.1 (28.05.2020)
+* (thost96) - optiomized Dockerfiles
 
-1.9 removed curl from latest image due to security bugs
+### 1.7.0(27.05.2020)
+* (thost96) - add alpine as an alternative base imag
 
-1.8 optimized Dockerfile and added fixed failing buils due to changed https certificate on static.tp-link.com
+### 1.6.0 (27.05.2020)
+* (thost96) - removed curl from latest image due to security bugs
 
-1.7 Updated Omada Controller Software to 3.2.10. Also added 3.2.10-lts-18 for backwards support on Ubuntu 18.04.
+### 1.5.1 (17.05.2020)
+* (thost96) - optimized Dockerfile and added fixed failing buils due to changed https certificate on static.tp-link.com
 
-1.6 Switched to Ubuntu 20.04 LTS in master and splitted 3.2.9 into 3.2.9-lts-18 for Ubuntu 18.04 and 3.2.9-lts-20 for Ubuntu 20.04
+### 1.5.0 (12.05.2020)
+* (thost96) - Updated Omada Controller Software to 3.2.10. Also added 3.2.10-lts-18 for backwards support on Ubuntu 18.04.
 
-1.5 Added docker run and docker compose commands to Readme
+### 1.4.0 (24.04.2020)
+* (thost96) - Switched to Ubuntu 20.04 LTS in master and splitted 3.2.9 into 3.2.9-lts-18 for Ubuntu 18.04 and 3.2.9-lts-20 for Ubuntu 20.04
 
-1.4 Updated Omada Controller Software to 3.2.9
+### 1.3.0 (23.04.2020)
+* (thost96) - Updated Omada Controller Software to 3.2.9
+* (thost96) - Added docker run and docker compose commands to Readme
 
-1.3 Fixed permission error on healthcheck.sh
+### 1.2.1 (30.05.2020)
+* (thost96) - Fixed permission error on healthcheck.sh
 
-1.2 Updated Omada Controller Software to 3.2.6
+### 1.2.0 (30.05.2020)
+* (thost96) - Updated Omada Controller Software to 3.2.6
 
-1.1 added timezone and locale and moved to docker template
+### 1.1.0 (21.02.2020)
+* (thost96) - added timezone and locale and moved to docker template
 
-1.0 initial release
+### 1.0.0 (17.01.2020)
+* (thost96) - initial release with omada controller 3.2.4
