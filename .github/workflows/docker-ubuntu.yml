@@ -145,3 +145,4 @@ jobs:
           uses: homoluctus/gitrivy@v2  
           with:
             image: ${{secrets.DOCKER_USER }}/omada:${{ matrix.tags }}
+            token: ${{ secrets.GITHUB_TOKEN }}
