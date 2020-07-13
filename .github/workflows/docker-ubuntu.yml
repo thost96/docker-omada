@@ -161,4 +161,4 @@ jobs:
           env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           with:
-            image: ${{secrets.DOCKER_USERNAME }}/omada:${{matrix.tag}}
+            image: ${{secrets.DOCKER_USER }}/omada:${{matrix.tag}}
