@@ -130,7 +130,7 @@ jobs:
       - uses: brpaz/hadolint-action@master
   
   securitycheck:
-     name: Scan for Vuls 
+     name: Trivy - Scan for Vuls 
      runs-on: ubuntu-latest
      strategy:
       fail-fast: false
@@ -146,3 +146,19 @@ jobs:
           with:
             image: ${{secrets.DOCKER_USER }}/omada:${{ matrix.tags }}
             token: ${{ secrets.GITHUB_TOKEN }}
+  
+  security:
+    name: Snyk - Security Check
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:        
+        tag: [latest, 3.2.10-lts-20, 3.2.10-lts-18, 3.2.9-lts-20, 3.2.9-lts-18, 3.2.6-lts-20, 3.2.6-lts-18, 3.2.4-lts-20, 3.2.4-lts-18, 3.2.1-lts-20, 3.2.1-lts-18]
+    steps:
+        - uses: actions/checkout@master
+        - name: Run Snyk to check for vulnerabilities
+          uses: snyk/actions/docker@master
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          with:
+            image: ${{secrets.DOCKER_USERNAME }}/omada:${{matrix.tag}}
