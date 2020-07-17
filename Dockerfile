@@ -20,6 +20,7 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends\
 	tzdata=${TZDATA_VERSION} \
 	tar=${TAR_VERSION} \
 	wget=${WGET_VERSION} \
+	net-tools \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
