@@ -34,10 +34,10 @@ ENV LANG="de_DE.UTF-8" \
 
 WORKDIR /tmp
 
-RUN wget --quiet --no-check-certificate ${OMADA_REPO}/Omada_Controller_v${OMADA_VERSION}_linux_x64.tar.gz \
-	&& tar zxf Omada_Controller_v${OMADA_VERSION}_linux_x64.tar.gz \
+RUN wget --quiet --no-check-certificate ${OMADA_REPO}/Omada_SDN_Controller_v${OMADA_VERSION}_linux_x64.tar.gz \
+	&& tar zxf Omada_SDN_Controller_v${OMADA_VERSION}_linux_x64.tar.gz \
 	&& mkdir -p /opt/tplink/EAPController/ \
-	&& cp -r /tmp/Omada_Controller_v${OMADA_VERSION}_linux_x64/* /opt/tplink/EAPController/ \
+	&& cp -r /tmp/Omada_SDN_Controller_v${OMADA_VERSION}_linux_x64/* /opt/tplink/EAPController/ \
 	&& rm -rf Omada*
 
 RUN apt-get remove tzdata -y \
