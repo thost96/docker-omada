@@ -162,3 +162,4 @@ jobs:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           with:
             image: ${{secrets.DOCKER_USER }}/omada:${{matrix.tag}}
+            args: --severity-threshold=high
