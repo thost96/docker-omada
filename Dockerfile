@@ -15,6 +15,7 @@ ARG OMADA_VERSION=3.2.10
 ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
     PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 
 
+# hadolint ignore=DL3008
 RUN apt-get update -qq && apt-get install -y --no-install-recommends\
 	locales=${LOCALES_VERSION} \      
 	tzdata=${TZDATA_VERSION} \
