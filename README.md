@@ -1,6 +1,9 @@
 # docker-omada
 TP-Links Omada Controller for EAPs as a Docker Image
 
+![Docker Image CI](https://github.com/thost96/docker-omada/workflows/Docker%20Image%20CI/badge.svg)
+![Lint Code Base](https://github.com/thost96/docker-omada/workflows/Lint%20Code%20Base/badge.svg)
+
 ## Docker RUN
 
     docker run \
@@ -33,7 +36,7 @@ TP-Links Omada Controller for EAPs as a Docker Image
 ## Changelog
 
 ### 1.8.2 (27.08.2020)
-* (thost96) - set Snyk scan to high only 
+* (thost96) - set Snyk scan to high only
 * (thost96) - fixed failing github actions
 
 ### 1.8.1 (20.06.2020)
