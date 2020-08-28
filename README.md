@@ -34,13 +34,13 @@ TP-Links Omada Controller for EAPs as a Docker Image
 
 ### 1.8.2 (27.08.2020)
 * (thost96) - set Snyk scan to high only 
-* (thost96) - fixed failing github actions 
+* (thost96) - fixed failing github actions
 
 ### 1.8.1 (20.06.2020)
 * (thost96) - changed changelog to global version
 
 ### 1.8.0 (29.05.2020)
-* (thost96) - added github actions auto build feature for all versions and os's 
+* (thost96) - added github actions auto build feature for all versions and os's
 
 ### 1.7.1 (28.05.2020)
 * (thost96) - optiomized Dockerfiles
