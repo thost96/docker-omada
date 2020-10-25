@@ -33,6 +33,7 @@ jobs:
           with:
             image: ${{secrets.DOCKER_USER }}/omada:${{ matrix.tags }}
             token: ${{ secrets.GITHUB_TOKEN }}
+            issue: false
   
   snyk:
     name: Snyk - Security Check
