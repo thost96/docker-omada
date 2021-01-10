@@ -35,6 +35,10 @@ TP-Links Omada Controller for EAPs as a Docker Image
 
 ## Changelog
 
+### 1.9.1 (10.01.2021)
+* (thost96) - added context for build 
+* (thost96) - updated Dockerfile 
+
 ### 1.9.0  (10.01.2021)
 * (thost96) - removed security checks from Docker Image CI Action into own Security Check Action
 * (thost96) - Updated Omada Controller Software to 3.2.14

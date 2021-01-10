@@ -46,7 +46,7 @@ jobs:
             tag: 3.2.10-lts-18 
             os: ubuntu:18.04
             locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0.18.04
+            tzdata: 2020a-0ubuntu0
             tar: 1.29b-2ubuntu0.1
             wget: 1.19.4-1ubuntu2.2
           
@@ -63,7 +63,7 @@ jobs:
             tag: 3.2.9-lts-18 
             os: ubuntu:18.04
             locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0.18.04
+            tzdata: 2020a-0ubuntu0
             tar: 1.29b-2ubuntu0.1
             wget: 1.19.4-1ubuntu2.2
             
@@ -80,7 +80,7 @@ jobs:
             tag: 3.2.6-lts-18 
             os: ubuntu:18.04
             locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0.18.04
+            tzdata: 2020a-0ubuntu0
             tar: 1.29b-2ubuntu0.1
             wget: 1.19.4-1ubuntu2.2
             
@@ -97,7 +97,7 @@ jobs:
             tag: 3.2.4-lts-18 
             os: ubuntu:18.04
             locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0.18.04
+            tzdata: 2020a-0ubuntu0
             tar: 1.29b-2ubuntu0.1
             wget: 1.19.4-1ubuntu2.2
           
@@ -114,7 +114,7 @@ jobs:
             tag: 3.2.1-lts-18 
             os: ubuntu:18.04
             locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0.18.04
+            tzdata: 2020a-0ubuntu0
             tar: 1.29b-2ubuntu0.1
             wget: 1.19.4-1ubuntu2.2
     steps:
@@ -132,6 +132,7 @@ jobs:
       - name: Docker Image Build
         uses: docker/build-push-action@v2
         with:
+            context: .
             push: true
             tags: thost96/omada:${{ matrix.tag }}      
             build-args: |
