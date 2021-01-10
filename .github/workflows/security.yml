@@ -22,7 +22,7 @@ jobs:
      strategy:
       fail-fast: false
       matrix:
-        tags: [latest, 3.2.10-lts-20, 3.2.10-lts-18, 3.2.9-lts-20, 3.2.9-lts-18, 3.2.6-lts-20, 3.2.6-lts-18, 3.2.4-lts-20, 3.2.4-lts-18, 3.2.1-lts-20, 3.2.1-lts-18]
+        tags: [latest, 3.2.14-lts-20, 3.2.10-lts-20, 3.2.10-lts-18, 3.2.9-lts-20, 3.2.9-lts-18, 3.2.6-lts-20, 3.2.6-lts-18, 3.2.4-lts-20, 3.2.4-lts-18, 3.2.1-lts-20, 3.2.1-lts-18]
      steps:
         - name: Login to DockerHub Registry
           run: echo ${{ secrets.DOCKER_PASS }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
@@ -41,7 +41,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:        
-        tag: [latest, 3.2.10-lts-20, 3.2.10-lts-18, 3.2.9-lts-20, 3.2.9-lts-18, 3.2.6-lts-20, 3.2.6-lts-18, 3.2.4-lts-20, 3.2.4-lts-18, 3.2.1-lts-20, 3.2.1-lts-18]
+        tag: [latest, 3.2.14-lts-20, 3.2.10-lts-20, 3.2.10-lts-18, 3.2.9-lts-20, 3.2.9-lts-18, 3.2.6-lts-20, 3.2.6-lts-18, 3.2.4-lts-20, 3.2.4-lts-18, 3.2.1-lts-20, 3.2.1-lts-18]
     steps:
         - uses: actions/checkout@master
         - name: Run Snyk to check for vulnerabilities

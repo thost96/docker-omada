@@ -24,9 +24,18 @@ jobs:
       fail-fast: false
       matrix:        
         include:
+          - version: 3.2.14
+            repo: "https://static.tp-link.com/2020/202012/20201225"
+            tag: 3.2.14-lts-20,3.2.14,latest
+            os: ubuntu:20.04
+            locales: 2.31-0ubuntu9
+            tzdata: 2019c-3ubuntu1
+            tar: 1.30+dfsg-7
+            wget: 1.20.3-1ubuntu1
+
           - version: 3.2.10
             repo: "https://static.tp-link.com/2020/202004/20200420"
-            tag: 3.2.10-lts-20,3.2.10,latest
+            tag: 3.2.10-lts-20,3.2.10
             os: ubuntu:20.04
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
