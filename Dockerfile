@@ -9,8 +9,8 @@ ARG TZDATA_VERSION="2019c-3ubuntu1"
 ARG TAR_VERSION="1.30+dfsg-7"
 ARG WGET_VERSION="1.20.3-1ubuntu1"
 ARG DEBIAN_FRONTEND=noninteractive
-ARG OMADA_REPO=https://static.tp-link.com/2020/202004/20200420
-ARG OMADA_VERSION=3.2.10
+ARG OMADA_REPO=https://static.tp-link.com/2020/202012/20201225
+ARG OMADA_VERSION=3.2.14
 
 ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
     PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 
