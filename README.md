@@ -1,5 +1,5 @@
 # docker-omada
-TP-Links Omada Controller for EAPs as a Docker Image
+TP-Links Omada Controller for EAPs running as a Docker Container for simplified use.
 
 ![Docker Image CI](https://github.com/thost96/docker-omada/workflows/Docker%20Image%20CI/badge.svg)
 ![Lint Code Base](https://github.com/thost96/docker-omada/workflows/Lint%20Code%20Base/badge.svg)
@@ -10,7 +10,6 @@ TP-Links Omada Controller for EAPs as a Docker Image
       --name omada-controller \
       --hostname omada \
       --restart always \      
-      -e 'TZ=Europe/Berlin' \
       --volume 'omada-data:/opt/tplink/EAPController/data' \
       --volume 'omada-work:/opt/tplink/EAPController/work' \
       --volume 'omada-logs:/opt/tplink/EAPController/logs' \
@@ -24,8 +23,6 @@ TP-Links Omada Controller for EAPs as a Docker Image
             container_name: omada-controller
             hostname: omada        
             restart: always
-            environment:
-                - TZ=Europe/Berlin
             volumes:
                 - 'omada-data:/opt/tplink/EAPController/data'
                 - 'omada-work:/opt/tplink/EAPController/work'
@@ -35,14 +32,17 @@ TP-Links Omada Controller for EAPs as a Docker Image
 
 ## Changelog
 
+### 2.0.1 (15.01.2021)
+* (thost96) - fixed linter issues and removed healthcheck as not working like intended 
+
 ### 2.0.0 (15.01.2021)
 * (thost96) - removed ubuntu 18.04 images as no longer needed, simplified image tagging
 * (thost96) - fixed linter issues and improved github actions
 * (thost96) - changed base image to own ubuntu 20.04 image and improved Dockerfile
 
 ### 1.9.1 (10.01.2021)
-* (thost96) - added context for build 
-* (thost96) - updated Dockerfile 
+* (thost96) - added context for build
+* (thost96) - updated Dockerfile
 
 ### 1.9.0  (10.01.2021)
 * (thost96) - removed security checks from Docker Image CI Action into own Security Check Action
