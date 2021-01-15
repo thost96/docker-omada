@@ -33,7 +33,7 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
 ## Changelog
 
 ### 2.0.1 (15.01.2021)
-* (thost96) - fixed linter issues and removed healthcheck as not working like intended 
+* (thost96) - fixed linter issues and removed healthcheck as not working like intended
 
 ### 2.0.0 (15.01.2021)
 * (thost96) - removed ubuntu 18.04 images as no longer needed, simplified image tagging

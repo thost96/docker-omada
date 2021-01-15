@@ -2,11 +2,10 @@ FROM thost96/ubuntu:20.04
 
 LABEL maintainer="info@thorstenreichelt.de"
 
-ARG LOCALES_VERSION="2.31-0ubuntu9" 
-ARG TZDATA_VERSION="2019c-3ubuntu1" 
-ARG TAR_VERSION="1.30+dfsg-7"
+ARG DEBIAN_FRONTEND="noninteractive"
+ARG TAR_VERSION="1.30+dfsg-7ubuntu0.20.04.1"
 ARG WGET_VERSION="1.20.3-1ubuntu1"
-ARG NETTOOLS_VERSION="1.20.3-1ubuntu1"
+ARG NETTOOLS_VERSION="1.60+git20180626.aebd88e-1ubuntu1"
 ARG OMADA_REPO=https://static.tp-link.com/2020/202012/20201225
 ARG OMADA_VERSION=3.2.14
 
@@ -15,11 +14,9 @@ ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
 
 # hadolint ignore=DL3008
 RUN apt-get update -qq && apt-get install -y --no-install-recommends\
-	locales=${LOCALES_VERSION} \      
-	tzdata=${TZDATA_VERSION} \
 	tar=${TAR_VERSION} \
 	wget=${WGET_VERSION} \
-	net-tools \
+	net-tools=${NETTOOLS_VERSION} \
 	&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
