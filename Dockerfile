@@ -1,6 +1,4 @@
-ARG BASEIMAGE=ubuntu:20.04
-# hadolint ignore=DL3006
-FROM ${BASEIMAGE}
+FROM thost96/ubuntu:20.04
 
 LABEL maintainer="info@thorstenreichelt.de"
 
@@ -8,7 +6,7 @@ ARG LOCALES_VERSION="2.31-0ubuntu9"
 ARG TZDATA_VERSION="2019c-3ubuntu1" 
 ARG TAR_VERSION="1.30+dfsg-7"
 ARG WGET_VERSION="1.20.3-1ubuntu1"
-ARG DEBIAN_FRONTEND=noninteractive
+ARG NETTOOLS_VERSION="1.20.3-1ubuntu1"
 ARG OMADA_REPO=https://static.tp-link.com/2020/202012/20201225
 ARG OMADA_VERSION=3.2.14
 
@@ -24,15 +22,6 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends\
 	net-tools \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
-	&& \dpkg-reconfigure --frontend=noninteractive locales \
-	&& \update-locale LANG=de_DE.UTF-8 \
-	&& cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
-
-ENV LANG="de_DE.UTF-8" \
-    LANGUAGE="de_DE.UTF-8" \
-    TZ="Europe/Berlin"
-
 WORKDIR /tmp
 
 RUN wget --quiet --no-check-certificate ${OMADA_REPO}/Omada_Controller_v${OMADA_VERSION}_linux_x64.tar.gz \
@@ -40,9 +29,6 @@ RUN wget --quiet --no-check-certificate ${OMADA_REPO}/Omada_Controller_v${OMADA_
 	&& mkdir -p /opt/tplink/EAPController/ \
 	&& cp -r /tmp/Omada_Controller_v${OMADA_VERSION}_linux_x64/* /opt/tplink/EAPController/ \
 	&& rm -rf Omada*
-
-RUN apt-get remove tzdata -y \
-	&& rm -rf /var/lib/apt/lists/*
 
 RUN groupadd omada \
 	&& useradd -g omada -d /opt/tplink/EAPController omada

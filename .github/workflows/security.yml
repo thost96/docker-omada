@@ -3,17 +3,18 @@ on:
   push:
     paths-ignore: 
       - "README.md"
+      - ".github/**"
     branches:
-    - master
+      - master
   schedule:
-    - cron:  "0 0 * * 0"
+    - cron: "0 0 * * 0"
   pull_request:
     paths-ignore: 
       - "README.md"
+      - ".github/**"
     branches:
-    - master
+      - master
       
-
 jobs:
   
   trivy:
@@ -22,16 +23,22 @@ jobs:
      strategy:
       fail-fast: false
       matrix:
-        tags: [latest, 3.2.14-lts-20, 3.2.10-lts-20, 3.2.10-lts-18, 3.2.9-lts-20, 3.2.9-lts-18, 3.2.6-lts-20, 3.2.6-lts-18, 3.2.4-lts-20, 3.2.4-lts-18, 3.2.1-lts-20, 3.2.1-lts-18]
+        tag: [latest, 3.2.14, 3.2.10, 3.2.9, 3.2.6, 3.2.4, 3.2.1]
+     
      steps:
-        - name: Login to DockerHub Registry
-          run: echo ${{ secrets.DOCKER_PASS }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+        - name: Login to DockerHub
+          uses: docker/login-action@v1 
+          with:
+            username: ${{ secrets.DOCKER_USER }}
+            password: ${{ secrets.DOCKER_PASS }}
+
         - name: Pull docker image
-          run: docker pull ${{secrets.DOCKER_USER }}/omada:${{ matrix.tags }}
+          run: docker pull ${{secrets.DOCKER_USER }}/omada:${{ matrix.tag }}
+          
         - name: Trivy Action
           uses: homoluctus/gitrivy@v2  
           with:
-            image: ${{secrets.DOCKER_USER }}/omada:${{ matrix.tags }}
+            image: ${{secrets.DOCKER_USER }}/omada:${{ matrix.tag }}
             token: ${{ secrets.GITHUB_TOKEN }}
             issue: false
   
@@ -41,7 +48,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:        
-        tag: [latest, 3.2.14-lts-20, 3.2.10-lts-20, 3.2.10-lts-18, 3.2.9-lts-20, 3.2.9-lts-18, 3.2.6-lts-20, 3.2.6-lts-18, 3.2.4-lts-20, 3.2.4-lts-18, 3.2.1-lts-20, 3.2.1-lts-18]
+        tag: [latest, 3.2.14, 3.2.10, 3.2.9, 3.2.6, 3.2.4, 3.2.1]
+    
     steps:
         - uses: actions/checkout@master
         - name: Run Snyk to check for vulnerabilities

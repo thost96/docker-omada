@@ -15,5 +15,3 @@ jobs:
 
       - name: Lint Code Base
         uses: github/super-linter@v3
-        env:
-          VALIDATE_DOCKERFILE: false

@@ -35,6 +35,11 @@ TP-Links Omada Controller for EAPs as a Docker Image
 
 ## Changelog
 
+### 2.0.0 (15.01.2021)
+* (thost96) - removed ubuntu 18.04 images as no longer needed, simplified image tagging
+* (thost96) - fixed linter issues and improved github actions
+* (thost96) - changed base image to own ubuntu 20.04 image and improved Dockerfile
+
 ### 1.9.1 (10.01.2021)
 * (thost96) - added context for build 
 * (thost96) - updated Dockerfile 

@@ -5,16 +5,15 @@ on:
     paths-ignore: 
       - "README.md"
     branches:
-    - master
+      - master
   schedule:
-    - cron:  "0 0 * * 0"
+    - cron: "0 0 * * 0"
   pull_request:
     paths-ignore: 
       - "README.md"
     branches:
-    - master
+      - master
       
-
 jobs:
   
   build:
@@ -26,8 +25,7 @@ jobs:
         include:
           - version: 3.2.14
             repo: "https://static.tp-link.com/2020/202012/20201225"
-            tag: 3.2.14-lts-20,3.2.14,latest
-            os: ubuntu:20.04
+            tag: 3.2.14,latest
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
@@ -35,88 +33,44 @@ jobs:
 
           - version: 3.2.10
             repo: "https://static.tp-link.com/2020/202004/20200420"
-            tag: 3.2.10-lts-20,3.2.10
-            os: ubuntu:20.04
+            tag: 3.2.10
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
-          - version: 3.2.10
-            repo: "https://static.tp-link.com/2020/202004/20200420"
-            tag: 3.2.10-lts-18 
-            os: ubuntu:18.04
-            locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0
-            tar: 1.29b-2ubuntu0.1
-            wget: 1.19.4-1ubuntu2.2
           
           - version: 3.2.9
             repo: "https://static.tp-link.com/2020/202004/20200409"
-            tag: 3.2.9-lts-20,3.2.9
-            os: ubuntu:20.04
+            tag: 3.2.9
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1      
-          - version: 3.2.9
-            repo: "https://static.tp-link.com/2020/202004/20200409"
-            tag: 3.2.9-lts-18 
-            os: ubuntu:18.04
-            locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0
-            tar: 1.29b-2ubuntu0.1
-            wget: 1.19.4-1ubuntu2.2
             
           - version: 3.2.6
             repo: "https://static.tp-link.com/2020/202001/20200116"
-            tag: 3.2.6-lts-20,3.2.6
-            os: ubuntu:20.04           
+            tag: 3.2.6          
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
-          - version: 3.2.6
-            repo: "https://static.tp-link.com/2020/202001/20200116"
-            tag: 3.2.6-lts-18 
-            os: ubuntu:18.04
-            locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0
-            tar: 1.29b-2ubuntu0.1
-            wget: 1.19.4-1ubuntu2.2
             
           - version: 3.2.4
             repo: "https://static.tp-link.com/2019/201911/20191108"
-            tag: 3.2.4-lts-20,3.2.4
-            os: ubuntu:20.04           
+            tag: 3.2.4          
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
-          - version: 3.2.4
-            repo: "https://static.tp-link.com/2019/201911/20191108"
-            tag: 3.2.4-lts-18 
-            os: ubuntu:18.04
-            locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0
-            tar: 1.29b-2ubuntu0.1
-            wget: 1.19.4-1ubuntu2.2
           
           - version: 3.2.1
             repo: "https://static.tp-link.com/2019/201909/20190906"
-            tag: 3.2.1-lts-20,3.2.1
-            os: ubuntu:20.04           
+            tag: 3.2.1          
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
-          - version: 3.2.1
-            repo: "https://static.tp-link.com/2019/201909/20190906"
-            tag: 3.2.1-lts-18 
-            os: ubuntu:18.04
-            locales: 2.27-3ubuntu1
-            tzdata: 2020a-0ubuntu0
-            tar: 1.29b-2ubuntu0.1
-            wget: 1.19.4-1ubuntu2.2
+
     steps:
       - uses: actions/checkout@v1
       
@@ -136,7 +90,6 @@ jobs:
             push: true
             tags: thost96/omada:${{ matrix.tag }}      
             build-args: |
-              BASEIMAGE=${{matrix.os}}
               OMADA_VERSION=${{matrix.version}}
               OMADA_REPO=${{matrix.repo}}
               LOCALES_VERSION=${{matrix.locales}}
