@@ -78,7 +78,7 @@ jobs:
         with:
             context: .
             push: true
-            platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
+            #platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
             tags: |
               ${{ secrets.DOCKER_USERNAME }}/omada:${{ matrix.tag }}
               ${{ secrets.PRIVATE_REGISTRY }}/omada:${{ matrix.tag }}
