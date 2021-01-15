@@ -23,8 +23,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - version: 3.2.14
-            repo: "https://static.tp-link.com/2020/202012/20201225"
+          - version: 3.2.10
+            repo: "https://static.tp-link.com/2020/202004/20200420"
             tag: latest
             
           - version: 3.2.14
@@ -81,10 +81,7 @@ jobs:
             platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
             tags: |
               ${{ secrets.DOCKER_USERNAME }}/omada:${{ matrix.tag }}
-#              ${{ secrets.PRIVATE_REGISTRY }}/omada:${{ matrix.tag }}
+              ${{ secrets.PRIVATE_REGISTRY }}/omada:${{ matrix.tag }}
             build-args: |
               OMADA_REPO=${{matrix.repo}}
-              OMADA_VERSION=${{matrix.version}}              
-              TAR_VERSION=${{matrix.tar}}
-              WGET_VERSION=${{matrix.wget}}
-              NETTOOLS_VERSION=${{matrix.nettools}}
+              OMADA_VERSION=${{matrix.version}}
