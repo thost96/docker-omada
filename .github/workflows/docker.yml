@@ -22,9 +22,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tar: [1.30+dfsg-7]
-        wget: [1.20.3-1ubuntu1]
-        nettools: [1.60+git20180626.aebd88e-1ubuntu1]
         include:
           - version: 3.2.14
             repo: "https://static.tp-link.com/2020/202012/20201225"
@@ -44,15 +41,15 @@ jobs:
             
           - version: 3.2.6
             repo: "https://static.tp-link.com/2020/202001/20200116"
-            tag: 3.2.6          
+            tag: 3.2.6
             
           - version: 3.2.4
             repo: "https://static.tp-link.com/2019/201911/20191108"
-            tag: 3.2.4          
+            tag: 3.2.4
           
           - version: 3.2.1
             repo: "https://static.tp-link.com/2019/201909/20190906"
-            tag: 3.2.1          
+            tag: 3.2.1
 
     steps:
       - uses: actions/checkout@v1

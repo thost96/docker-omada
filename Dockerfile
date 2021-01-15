@@ -5,18 +5,14 @@ LABEL maintainer="info@thorstenreichelt.de"
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG OMADA_REPO=https://static.tp-link.com/2020/202012/20201225
 ARG OMADA_VERSION=3.2.14
-ARG TAR_VERSION="1.30+dfsg-7ubuntu0.20.04.1"
-ARG WGET_VERSION="1.20.3-1ubuntu1"
-ARG NETTOOLS_VERSION="1.60+git20180626.aebd88e-1ubuntu1"
 
 ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
     PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 
 
-# hadolint ignore=DL3008
 RUN apt-get update -qq && apt-get install -y --no-install-recommends\
-	tar=${TAR_VERSION} \
-	wget=${WGET_VERSION} \
-	net-tools=${NETTOOLS_VERSION} \
+	tar=1.30+dfsg-7ubuntu0.20.04.1 \
+	wget=1.20.3-1ubuntu1 \
+	net-tools=1.60+git20180626.aebd88e-1ubuntu1 \
 	&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
