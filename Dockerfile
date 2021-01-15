@@ -3,11 +3,11 @@ FROM thost96/ubuntu:20.04
 LABEL maintainer="info@thorstenreichelt.de"
 
 ARG DEBIAN_FRONTEND="noninteractive"
+ARG OMADA_REPO=https://static.tp-link.com/2020/202012/20201225
+ARG OMADA_VERSION=3.2.14
 ARG TAR_VERSION="1.30+dfsg-7ubuntu0.20.04.1"
 ARG WGET_VERSION="1.20.3-1ubuntu1"
 ARG NETTOOLS_VERSION="1.60+git20180626.aebd88e-1ubuntu1"
-ARG OMADA_REPO=https://static.tp-link.com/2020/202012/20201225
-ARG OMADA_VERSION=3.2.14
 
 ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
     PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 

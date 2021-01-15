@@ -17,7 +17,7 @@ on:
 jobs:
   
   build:
-    name: Omada Controller ${{ matrix.version }} on ${{ matrix.os }}
+    name: Omada Controller ${{ matrix.version }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -30,6 +30,7 @@ jobs:
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
+            nettools: 1.60+git20180626.aebd88e-1ubuntu1
 
           - version: 3.2.10
             repo: "https://static.tp-link.com/2020/202004/20200420"
@@ -38,6 +39,7 @@ jobs:
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
+            nettools: 1.60+git20180626.aebd88e-1ubuntu1
           
           - version: 3.2.9
             repo: "https://static.tp-link.com/2020/202004/20200409"
@@ -45,7 +47,8 @@ jobs:
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
-            wget: 1.20.3-1ubuntu1      
+            wget: 1.20.3-1ubuntu1
+            nettools: 1.60+git20180626.aebd88e-1ubuntu1  
             
           - version: 3.2.6
             repo: "https://static.tp-link.com/2020/202001/20200116"
@@ -54,6 +57,7 @@ jobs:
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
+            nettools: 1.60+git20180626.aebd88e-1ubuntu1
             
           - version: 3.2.4
             repo: "https://static.tp-link.com/2019/201911/20191108"
@@ -62,6 +66,7 @@ jobs:
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
+            nettools: 1.60+git20180626.aebd88e-1ubuntu1
           
           - version: 3.2.1
             repo: "https://static.tp-link.com/2019/201909/20190906"
@@ -70,6 +75,7 @@ jobs:
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
             wget: 1.20.3-1ubuntu1
+            nettools: 1.60+git20180626.aebd88e-1ubuntu1
 
     steps:
       - uses: actions/checkout@v1
@@ -88,11 +94,10 @@ jobs:
         with:
             context: .
             push: true
-            tags: thost96/omada:${{ matrix.tag }}      
+            tags: ${{ secrets.DOCKER_USER }}/omada:${{ matrix.tag }}      
             build-args: |
-              OMADA_VERSION=${{matrix.version}}
               OMADA_REPO=${{matrix.repo}}
-              LOCALES_VERSION=${{matrix.locales}}
-              TZDATA_VERSION=${{matrix.tzdata}}
+              OMADA_VERSION=${{matrix.version}}              
               TAR_VERSION=${{matrix.tar}}
               WGET_VERSION=${{matrix.wget}}
+              NETTOOLS_VERSION=${{matrix.nettools}}
