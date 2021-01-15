@@ -25,7 +25,16 @@ jobs:
         include:
           - version: 3.2.14
             repo: "https://static.tp-link.com/2020/202012/20201225"
-            tag: 3.2.14,latest
+            tag: latest
+            locales: 2.31-0ubuntu9
+            tzdata: 2019c-3ubuntu1
+            tar: 1.30+dfsg-7
+            wget: 1.20.3-1ubuntu1
+            nettools: 1.60+git20180626.aebd88e-1ubuntu1
+
+          - version: 3.2.14
+            repo: "https://static.tp-link.com/2020/202012/20201225"
+            tag: 3.2.14
             locales: 2.31-0ubuntu9
             tzdata: 2019c-3ubuntu1
             tar: 1.30+dfsg-7
