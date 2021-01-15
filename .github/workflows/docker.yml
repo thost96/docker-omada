@@ -21,70 +21,38 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:        
+      matrix:
+        tar: 1.30+dfsg-7
+        wget: 1.20.3-1ubuntu1
+        nettools: 1.60+git20180626.aebd88e-1ubuntu1
         include:
           - version: 3.2.14
             repo: "https://static.tp-link.com/2020/202012/20201225"
             tag: latest
-            locales: 2.31-0ubuntu9
-            tzdata: 2019c-3ubuntu1
-            tar: 1.30+dfsg-7
-            wget: 1.20.3-1ubuntu1
-            nettools: 1.60+git20180626.aebd88e-1ubuntu1
-
+            
           - version: 3.2.14
             repo: "https://static.tp-link.com/2020/202012/20201225"
             tag: 3.2.14
-            locales: 2.31-0ubuntu9
-            tzdata: 2019c-3ubuntu1
-            tar: 1.30+dfsg-7
-            wget: 1.20.3-1ubuntu1
-            nettools: 1.60+git20180626.aebd88e-1ubuntu1
 
           - version: 3.2.10
             repo: "https://static.tp-link.com/2020/202004/20200420"
             tag: 3.2.10
-            locales: 2.31-0ubuntu9
-            tzdata: 2019c-3ubuntu1
-            tar: 1.30+dfsg-7
-            wget: 1.20.3-1ubuntu1
-            nettools: 1.60+git20180626.aebd88e-1ubuntu1
           
           - version: 3.2.9
             repo: "https://static.tp-link.com/2020/202004/20200409"
             tag: 3.2.9
-            locales: 2.31-0ubuntu9
-            tzdata: 2019c-3ubuntu1
-            tar: 1.30+dfsg-7
-            wget: 1.20.3-1ubuntu1
-            nettools: 1.60+git20180626.aebd88e-1ubuntu1  
             
           - version: 3.2.6
             repo: "https://static.tp-link.com/2020/202001/20200116"
             tag: 3.2.6          
-            locales: 2.31-0ubuntu9
-            tzdata: 2019c-3ubuntu1
-            tar: 1.30+dfsg-7
-            wget: 1.20.3-1ubuntu1
-            nettools: 1.60+git20180626.aebd88e-1ubuntu1
             
           - version: 3.2.4
             repo: "https://static.tp-link.com/2019/201911/20191108"
             tag: 3.2.4          
-            locales: 2.31-0ubuntu9
-            tzdata: 2019c-3ubuntu1
-            tar: 1.30+dfsg-7
-            wget: 1.20.3-1ubuntu1
-            nettools: 1.60+git20180626.aebd88e-1ubuntu1
           
           - version: 3.2.1
             repo: "https://static.tp-link.com/2019/201909/20190906"
             tag: 3.2.1          
-            locales: 2.31-0ubuntu9
-            tzdata: 2019c-3ubuntu1
-            tar: 1.30+dfsg-7
-            wget: 1.20.3-1ubuntu1
-            nettools: 1.60+git20180626.aebd88e-1ubuntu1
 
     steps:
       - uses: actions/checkout@v1
@@ -116,7 +84,7 @@ jobs:
             platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
             tags: |
               ${{ secrets.DOCKER_USERNAME }}/omada:${{ matrix.tag }}
-              ${{ secrets.PRIVATE_REGISTRY }}/omada:${{ matrix.tag }}
+#              ${{ secrets.PRIVATE_REGISTRY }}/omada:${{ matrix.tag }}
             build-args: |
               OMADA_REPO=${{matrix.repo}}
               OMADA_VERSION=${{matrix.version}}              
