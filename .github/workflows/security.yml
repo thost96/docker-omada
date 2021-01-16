@@ -1,19 +1,9 @@
 name: Security Checks
 on:
-  push:
-    paths-ignore: 
-      - "README.md"
-      - ".github/**"
-    branches:
-      - master
+  release:
+    types: [published]
   schedule:
     - cron: "0 0 * * 0"
-  pull_request:
-    paths-ignore: 
-      - "README.md"
-      - ".github/**"
-    branches:
-      - master
       
 jobs:
   

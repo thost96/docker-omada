@@ -32,6 +32,9 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
 
 ## Changelog
 
+### 2.0.3 (16.01.2021)
+* (thost96) - added docker build and push on release only, so dev builds don't get published
+
 ### 2.0.2 (15.01.2021)
 * (thost96) - fixed typo and simplified docker build actions
 * (thost96) - reverted latest to 3.2.10 as 3.2.14 seems not to work yet
