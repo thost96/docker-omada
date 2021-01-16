@@ -42,7 +42,7 @@ WORKDIR /opt/tplink/EAPController
 RUN chmod +x entrypoint.sh  
 
 USER omada
-EXPOSE 8043 27001/udp 29810/udp 29811 29812
+EXPOSE 8043/tcp 8088/tcp 27001/udp 27002/tcp 29810/udp 29811/tcp 29812/tcp 29813/tcp
 VOLUME ["/opt/tplink/EAPController/data","/opt/tplink/EAPController/work","/opt/tplink/EAPController/logs"]
 ENTRYPOINT ["sh", "/opt/tplink/EAPController/entrypoint.sh"]
 #CMD ["/opt/tplink/EAPController/jre/bin/java", " -server -Xms128m -Xmx1024m -XX:MaxHeapFreeRatio=60 -XX:MinHeapFreeRatio=30 -Deap.home=/opt/tplink/EAPController -cp /usr/share/java/commons-daemon.jar:/opt/tplink/EAPController/lib/* com.tp_link.eap.start.EapLinuxMain"]
