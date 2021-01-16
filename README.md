@@ -9,7 +9,9 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
     docker run \
       --name omada-controller \
       --hostname omada \
-      --restart always \      
+      --restart always \
+      --env HTTPPORT=8088 \
+      --env HTTPSPORT=8043 \
       --volume 'omada-data:/opt/tplink/EAPController/data' \
       --volume 'omada-work:/opt/tplink/EAPController/work' \
       --volume 'omada-logs:/opt/tplink/EAPController/logs' \
@@ -21,16 +23,22 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
     services:
         omada-controller:
             container_name: omada-controller
-            hostname: omada        
+            hostname: omada
             restart: always
+            environment:
+                - HTTPPORT=8088
+                - HTTPSPORT=8043
             volumes:
                 - 'omada-data:/opt/tplink/EAPController/data'
                 - 'omada-work:/opt/tplink/EAPController/work'
                 - 'omada-logs:/opt/tplink/EAPController/logs'
             image: 'thost96/omada:latest'
 
-
 ## Changelog
+
+### 2.1.0 (pending)
+* (thost96) - add option to configure http and https web ui ports using env variables
+* (thost96) - fixed typos and updated README
 
 ### 2.0.3 (16.01.2021)
 * (thost96) - added docker build and push on release only, so dev builds don't get published

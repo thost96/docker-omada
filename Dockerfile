@@ -6,10 +6,12 @@ ARG DEBIAN_FRONTEND="noninteractive"
 ARG OMADA_REPO=https://static.tp-link.com/2020/202012/20201225
 ARG OMADA_VERSION=3.2.14
 
-ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java \
-    PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 
+ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java
+ENV PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 
+ENV HTTPPORT=8088
+ENV HTTPSPORT=8043
 
-RUN apt-get update -qq && apt-get install -y --no-install-recommends\
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
 	tar=1.30+dfsg-7ubuntu0.20.04.1 \
 	wget=1.20.3-1ubuntu1 \
 	net-tools=1.60+git20180626.aebd88e-1ubuntu1 \
