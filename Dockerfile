@@ -1,4 +1,4 @@
-FROM thost96/ubuntu:20.04
+FROM ubuntu:20.04
 
 LABEL maintainer="info@thorstenreichelt.de"
 
