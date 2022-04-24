@@ -11,6 +11,7 @@ ENV PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java
 ENV HTTPPORT=8088
 ENV HTTPSPORT=8043
 
+# hadolint ignore=DL3008
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
 	tar \
 	wget \
