@@ -1,3 +1,4 @@
+---
 name: Docker Image CI
 
 on:
@@ -11,7 +12,7 @@ on:
 jobs:
   
   build:
-    name: Omada Controller ${{ matrix.version }}
+    name: Omada Controller ${{ matrix.tag }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -64,10 +65,10 @@ jobs:
       - name: Docker Image Build
         uses: docker/build-push-action@v2
         with:
-            context: .
-            push: false
-            tags: |
-              ${{ secrets.DOCKER_USERNAME }}/omada:${{ matrix.tag }}
-            build-args: |
-              OMADA_REPO=${{matrix.repo}}
-              OMADA_VERSION=${{matrix.version}}
+          context: .
+          push: false
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/omada:${{ matrix.tag }}
+          build-args: |
+            OMADA_REPO=${{matrix.repo}}
+            OMADA_VERSION=${{matrix.version}}

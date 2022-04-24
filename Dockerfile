@@ -12,9 +12,9 @@ ENV HTTPPORT=8088
 ENV HTTPSPORT=8043
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
-	tar=1.30+dfsg-7ubuntu0.20.04.1 \
-	wget=1.20.3-1ubuntu1 \
-	net-tools=1.60+git20180626.aebd88e-1ubuntu1 \
+	tar \
+	wget \
+	net-tools \
 	&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
@@ -35,11 +35,9 @@ RUN mkdir -p /opt/tplink/EAPController/logs /opt/tplink/EAPController/work /opt/
 	&& chmod a+x /opt/tplink/EAPController/bin/* \
 	&& chmod a+x /opt/tplink/EAPController/jre/bin/*
 
-#COPY --chown=omada:omada entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
-COPY --chown=omada:omada entrypoint.sh /opt/tplink/EAPController/
+COPY --chown=omada:omada entrypoint.sh healthcheck.sh /opt/tplink/EAPController/
 WORKDIR /opt/tplink/EAPController
-#RUN chmod +x entrypoint.sh healthcheck.sh 
-RUN chmod +x entrypoint.sh  
+RUN chmod +x entrypoint.sh healthcheck.sh 
 
 USER omada
 EXPOSE 8043/tcp 8088/tcp 27001/udp 27002/tcp 29810/udp 29811/tcp 29812/tcp 29813/tcp

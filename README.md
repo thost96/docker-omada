@@ -36,18 +36,21 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
 
 ## Changelog
 
+### 2.2.1 (24.04.2022)
+* (thost96) - fixed linter and action errors
+
 ### 2.2.0 (24.04.2022)
 * (thost96) - added missing ports on expose
 * (thost96) - added version 3.2.16 as latest
 * (thost96) - improved linter and security checks
 
 ### 2.1.0 (16.01.2021)
-* (thost96) - add option to configure http and https web ui ports using env variables
+* (thost96) - add option to configure http and HTTPS web ui ports using env variables
 * (thost96) - fixed typos and updated README
 
 ### 2.0.3 (16.01.2021)
 * (thost96) - added docker build and push on release only, so dev builds don't get published
-* (thost96) - added github token to linter
+* (thost96) - added GitHub token to linter
 
 ### 2.0.2 (15.01.2021)
 * (thost96) - fixed typo and simplified docker build actions
@@ -61,7 +64,7 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
 
 ### 2.0.0 (15.01.2021)
 * (thost96) - removed ubuntu 18.04 images as no longer needed, simplified image tagging
-* (thost96) - fixed linter issues and improved github actions
+* (thost96) - fixed linter issues and improved GitHub actions
 * (thost96) - changed base image to own ubuntu 20.04 image and improved Dockerfile
 
 ### 1.9.1 (10.01.2021)
@@ -74,13 +77,13 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
 
 ### 1.8.2 (27.08.2020)
 * (thost96) - set Snyk scan to high only
-* (thost96) - fixed failing github actions
+* (thost96) - fixed failing GitHub actions
 
 ### 1.8.1 (20.06.2020)
 * (thost96) - changed changelog to global version
 
 ### 1.8.0 (29.05.2020)
-* (thost96) - added github actions auto build feature for all versions and os's
+* (thost96) - added GitHub actions auto build feature for all versions and os's
 
 ### 1.7.1 (28.05.2020)
 * (thost96) - optiomized Dockerfiles
@@ -92,7 +95,7 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
 * (thost96) - removed curl from latest image due to security bugs
 
 ### 1.5.1 (17.05.2020)
-* (thost96) - optimized Dockerfile and added fixed failing buils due to changed https certificate on static.tp-link.com
+* (thost96) - optimized Dockerfile and added fixed failing buils due to changed HTTPS certificate on static.tp-link.com
 
 ### 1.5.0 (12.05.2020)
 * (thost96) - Updated Omada Controller Software to 3.2.10. Also added 3.2.10-lts-18 for backwards support on Ubuntu 18.04.
