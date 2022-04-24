@@ -17,9 +17,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - version: 3.2.10
-            repo: "https://static.tp-link.com/2020/202004/20200420"
+          - version: 3.2.16
+            repo: "https://static.tp-link.com/upload/software/2022/202201/20220125"
             tag: latest
+
+          - version: 3.2.16
+            repo: "https://static.tp-link.com/upload/software/2022/202201/20220125"
+            tag: 3.2.16
             
           - version: 3.2.14
             repo: "https://static.tp-link.com/2020/202012/20201225"

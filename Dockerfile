@@ -3,8 +3,8 @@ FROM ubuntu:20.04
 LABEL maintainer="info@thorstenreichelt.de"
 
 ARG DEBIAN_FRONTEND="noninteractive"
-ARG OMADA_REPO=https://static.tp-link.com/2020/202012/20201225
-ARG OMADA_VERSION=3.2.14
+ARG OMADA_REPO=https://static.tp-link.com/upload/software/2022/202201/20220125
+ARG OMADA_VERSION=3.2.16
 
 ENV JAVA_HOME=/opt/tplink/EAPController/jre/bin/java
 ENV PATH=${PATH}:/opt/tplink/EAPController/jre/bin/java 

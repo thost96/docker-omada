@@ -36,8 +36,10 @@ TP-Links Omada Controller for EAPs running as a Docker Container for simplified 
 
 ## Changelog
 
-### 2.1.1 (pending)
+### 2.2.0 (24.04.2022)
 * (thost96) - added missing ports on expose
+* (thost96) - added version 3.2.16 as latest
+* (thost96) - improved linter and security checks
 
 ### 2.1.0 (16.01.2021)
 * (thost96) - add option to configure http and https web ui ports using env variables
