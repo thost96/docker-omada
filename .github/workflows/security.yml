@@ -1,0 +1,8 @@
+---
+name: Security Checks
+on:
+  push:
+
+jobs:
+  call-super-linter:
+    uses: thost96/workflows/.github/workflows/security.yml@main

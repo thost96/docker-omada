@@ -65,9 +65,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          push: false
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/omada:${{ matrix.tag }}
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/omada:${{ matrix.tag }}
           build-args: |
             OMADA_REPO=${{matrix.repo}}
             OMADA_VERSION=${{matrix.version}}
